@@ -5,7 +5,7 @@ class STT:
         self.model_name = 'medium.en'
         self.model = whisper.load_model(self.model_name)
     
-    def transcribe(self, audio_path):
-        return self.model.transcribe(audio_path)['segments']
+    def transcribe(self, audio):
+        return self.model.transcribe(audio)['segments']
 
 stt = STT()

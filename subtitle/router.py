@@ -4,11 +4,9 @@ import aiofiles
 from utils.hash_gen import generate_hash
 from subtitle.enums.file_category import FileCategory
 from subtitle.services import convert_to_wav
-from services.stt import stt
 from config import UPLOAD_DIR, SRT_DIR
-from services.translation import translation
 import os
-from .services import generate_srt
+from .services import generate_srt, generate_segments
 
 
 router = APIRouter(prefix='/subtitle')
@@ -30,7 +28,8 @@ async def generate_subtitle(file: UploadFile):
 
     if extension != 'wav':
         filename_with_ex = convert_to_wav(file_path, filename)
-    segments = stt.transcribe(os.path.join(UPLOAD_DIR, filename_with_ex))
+
+    segments = generate_segments(os.path.join(UPLOAD_DIR, filename_with_ex))
     srt_path = os.path.join(SRT_DIR, f'{filename}.srt')
     generate_srt(segments, srt_path)
     return FileResponse(
