@@ -11,14 +11,13 @@ def convert_to_wav(path, filename):
         '-acodec', 'pcm_s16le',
         '-ac', '1',
         '-ar', '16000',
-        f'{filename}.wav'
+        os.path.join(UPLOAD_DIR, f'{filename}.wav')
     ])
     subprocess.run(['rm', '-f', path])
     return f'{filename}.wav'
 
 def generate_srt(segments, path):
     for segment in segments:
-        segment['text'] = translation.translate(segment['text'])
-    print(segments)
+        segment['text'] = translation.translate(segment['text'])[0]
     srt_compose.append_bulk(segments)
     srt_compose.save(path)

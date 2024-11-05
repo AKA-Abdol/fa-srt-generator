@@ -1,5 +1,4 @@
-from enum import Enum
-
-class FileCategory(Enum):
-    Audio = 'audio'
-    Video = 'video'
+FileCategory = {
+    'Audio': 'audio',
+    'Video': 'video'
+}
