@@ -16,7 +16,7 @@ router = APIRouter(prefix='/subtitle')
 @router.post('/generate/')
 async def generate_subtitle(file: UploadFile):
     cat, extension = file.content_type.split('/')
-    original_filename = ''.join(file.filename.split('.')[:-2])
+    original_filename = '.'.join(file.filename.split('.')[:-1])
     if cat != FileCategory['Audio'] and cat != FileCategory['Video']:
         raise HTTPException(status.HTTP_400_BAD_REQUEST, detail='file is not video nor audio')
 
