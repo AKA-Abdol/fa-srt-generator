@@ -1,0 +1,6 @@
+.venv
+**/__pycache__
+upload/*.*
+srt/*.*
+Dockerfile
+docker-compose.yml

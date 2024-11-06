@@ -123,12 +123,9 @@ tensorboardX==2.6.2.2
 threadpoolctl==3.5.0
 tiktoken==0.8.0
 tokenizers==0.20.1
-torch==2.5.1+cu118
 torch-audiomentations==0.11.1
 torch_pitch_shift==1.2.5
-torchaudio==2.5.1+cu118
 torchmetrics==1.5.1
-torchvision==0.20.1+cu118
 tqdm==4.66.6
 transformers==4.46.1
 triton==3.1.0
